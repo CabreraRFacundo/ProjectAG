@@ -1,0 +1,238 @@
+// Colors
+$bg: #000;
+$tab-bg: #f9f9f9;
+$f-color: #ba9872;
+$s-color: #967b5c;
+$t-color: #a38564;
+$fo-color: #f9f9f9;
+$fi-color: #e2e2e2;
+
+// Mixins
+@mixin posAbsolute($p) {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+
+    @if ($p ==a) {
+        position: absolute;
+    }
+
+    @else if ($p ==r) {
+        position: relative;
+    }
+}
+
+// General styles
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    background-color: $bg;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Envelope Styles
+.envelop {
+    overflow: visible;
+    width: 15rem;
+    height: 10rem;
+    position: relative;
+    margin: auto;
+    transform: translateZ(0);
+
+    @media (min-width: 400px) and (max-width: 600px) {
+        width: 20rem;
+        height: 15rem;
+    }
+
+    @media (min-width: 600px) {
+        width: 25rem;
+        height: 20rem;
+    }
+
+    &__front-paper {
+        @include posAbsolute(a);
+        border-radius: 0.7rem;
+        border: 0.35rem solid $s-color;
+        background-color: $f-color;
+        clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+        z-index: 300;
+    }
+
+    &__back-paper {
+        @include posAbsolute(a);
+        border-radius: 0.7rem;
+        background-color: $s-color;
+        clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+        z-index: 100;
+    }
+
+    &__up-paper {
+        @include posAbsolute(r);
+        border-radius: 0.7rem;
+        background-color: $s-color;
+        z-index: 400;
+        clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+        cursor: pointer;
+    }
+
+    &__sticker,
+    &__false-sticker {
+        width: 20%;
+        height: 20%;
+        position: absolute;
+        margin: auto;
+        top: 30%;
+        bottom: 0;
+        right: 0;
+        z-index: 400;
+        background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 2.5rem;
+        background-color: $fo-color;
+        border: 0.3rem solid $fi-color;
+        cursor: pointer;
+
+        @media (max-width: 400px) {
+            background-size: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            background-size: 3rem;
+            height: 15%;
+        }
+    }
+
+    &__false-sticker {
+        left: 80%;
+        z-index: 300;
+    }
+
+    &__content {
+        @include posAbsolute(a);
+        z-index: 200;
+    }
+}
+
+
+// Notes Container
+.love-notes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 150;
+
+}
+
+.envelop.open .envelop__front-paper {
+    z-index: 10;
+}
+
+.envelop.open .love-notes {
+    z-index: 600;
+}
+
+
+// Individual Note
+.note {
+    width: 90%;
+    height: 60%;
+    background-color: $tab-bg;
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transform: translateZ(0);
+    transform-origin: bottom center;
+
+    &:nth-child(1) {
+        bottom: 10%;
+        z-index: 200;
+    }
+
+    &:nth-child(2) {
+        bottom:20%;
+        z-index: 190;
+    }
+
+    &:nth-child(3) {
+        bottom: 30%;
+        z-index: 180;
+    }
+
+    &:nth-child(4) {
+        bottom: 40%;
+        z-index: 170;
+    }
+    &:hover {
+        transform: translateY(-5px) rotate(-1deg);
+        cursor: pointer;
+    }
+
+    &__text {
+        font-family: "Sofia";
+        padding: 1rem;
+        color: #000;
+        text-align: center;
+
+        p:first-child {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        p:last-child {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 400px) {
+            p:last-child {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 600px) {
+            p:last-child {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+.note__text {
+    padding: 1rem;
+    width: 100%;
+}
+// Cursor
+.scissors {
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: pointer;
+}
