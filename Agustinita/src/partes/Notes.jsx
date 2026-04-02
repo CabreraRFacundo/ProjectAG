@@ -25,13 +25,20 @@ export default function Notes({ isOpen }) {
         return "55%";
     };
 
+    const getY = (i) => {
+        if (activeIndex === i) {
+            return -120;
+        }
+        return -20 * i;
+    };
     // Animación al cambiar la nota activa (clic del usuario)
+
     useEffect(() => {
         notesRef.current.forEach((noteEl, i) => {
             if (!noteEl) return;
 
             gsap.to(noteEl, {
-                y: activeIndex === i ? -120 - (i * 40) : -20 * i,
+                y: getY(i),
                 height: getHeight(i),
                 duration: 0.4,
                 ease: "power2.out"
@@ -40,7 +47,7 @@ export default function Notes({ isOpen }) {
     }, [activeIndex, isMobile, isTablet]);
 
     // Animación al abrir el sobre
-useEffect(() => {
+    useEffect(() => {
         if (!isOpen) return;
 
         notesRef.current.forEach((noteEl, i) => {
