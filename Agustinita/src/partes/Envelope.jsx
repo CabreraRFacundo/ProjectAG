@@ -9,7 +9,7 @@ export default function Envelope() {
     const [stickerClicked, setStickerClicked] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-    // Animación del sticker
+
     useEffect(() => {
         if (!stickerClicked) return;
         const stickerEl = stickerRef.current;
@@ -21,7 +21,7 @@ export default function Envelope() {
         if (upPaper) upPaper.classList.add("cursor");
     }, [stickerClicked]);
 
-    // Abrir el sobre (solo abrir, sin cerrar)
+    
     useEffect(() => {
         if (!isOpen) return;
         const upPaper = upPaperRef.current;

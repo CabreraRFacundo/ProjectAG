@@ -4,21 +4,22 @@ import { useMediaQuery } from "./useMediaQuery";
 
 const notesData = [
     {
-        letter: "Carta 1",
-        text: "me cuesta mucho decirte las cosas que siento sin que se me haga un nudo en la garganta por la emocion. sigo sin saber bien como hacer una carta, y tambien siento que no se expresar mis sentimientos muy bien, asi que voy a escribir lo que me salga: 'sos hermosa y te amo mucho' podria repetir eso por mil paginas y seguro me quedo corto."
+        letter: "Te",
+        text: "Me cuesta mucho decirte las cosas que siento sin que se me haga un nudo en la garganta por la emoción. Sigo sin saber bien cómo hacer una carta, y también siento que no sé expresar mis sentimientos muy bien, así que voy a escribir lo que me salga: 'Sos hermosa y te amo mucho'. Podría repetir eso por mil páginas y seguro me quedo corto."
     },
     {
-        letter: "Carta 2",
-        text: "odio la distancia, pero saber que me esperas, lo hace mas llevadero. haces que los dias no sean tan malos, pensar en vos siempre me alegra, y hablar con vos todavia mas; muchos dias no tengo energia para hablar, y aun asi me sacar charla hasta que me cargas la pila con tu voz."
+        letter: "Amo",
+        text: "Odio la distancia, pero saber que me esperas lo hace más llevadero. Haces que los días no sean tan malos, pensar en vos siempre me alegra, y hablar con vos todavía más; muchos días no tengo energía para hablar, y aun así me sacás charla hasta que me cargas la pila con tu voz."
     },
     {
-        letter: "Carta 3",
-        text: "siempre tuve una vida muy monotona, y tranquila, solo pensaba en lo mio y los pequenios logros, no significaban tanto para mi, ahora me emociona cualquier cosa porque se que te lo puedo contar y se que me vas a escuchar con atencion. capaz que en cierto sentido me devolviste la vida asi que gracias por interesarte, por quererme y por escucharme."
+        letter: "Mucho",
+        text: "Siempre tuve una vida muy monótona y tranquila, solo pensaba en lo mío y los pequeños logros no significaban tanto para mí. Ahora me emociona cualquier cosa porque sé que te lo puedo contar y sé que me vas a escuchar con atención. Capaz que en cierto sentido me devolviste la vida, así que gracias por interesarte, por quererme, por escucharme."
     },
     {
-        letter: "Carta 4",
-        text: "la primera semana te extranie bastante y se me hizo complicado pensar que no iba a poder abrazarte pero tambien confio en que esto nos va a hacer querernos mas y valorar el tiempo que pasemos juntos. escribir esto me dio varios nudos en la garganta, pero no llore, supongo que vuelvo a ser un insensible o capaz me estoy acostumbrando para no hacerte preocupar, obviamente te extrano mucho y obvio que te amo muchisimo mas (y mas que vos)."
-    }
+        letter: "Mi Agu",
+        text: "La primera semana te extranie bastante y se me hizo complicado pensar que no iba a poder abrazarte, pero también confío en que esto nos va a hacer querernos más y valorar el tiempo que pasemos juntos. Escribir esto me dio varios nudos en la garganta, pero no lloré, supongo que vuelvo a ser un insensible o capaz me estoy acostumbrando para no hacerte preocupar. Obviamente te extraño mucho y obvio que te amo muchísimo más (y más que vos)."
+    },
+
 ];
 
 export default function Notes({ isOpen }) {
@@ -28,7 +29,7 @@ export default function Notes({ isOpen }) {
     const isMobile = useMediaQuery("(max-width: 400px)");
     const isTablet = useMediaQuery("(min-width: 400px) and (max-width: 600px)");
 
-    // Función para calcular altura según tipo de dispositivo y posición
+
     const getHeight = (i) => {
         if (activeIndex === i) {
             return isMobile ? "95%" : isTablet ? "90%" : "85%";
@@ -42,7 +43,8 @@ export default function Notes({ isOpen }) {
         }
         return -20 * i;
     };
-    // Animación al cambiar la nota activa (clic del usuario)
+
+    
     useEffect(() => {
         notesRef.current.forEach((noteEl, i) => {
             if (!noteEl) return;
@@ -75,7 +77,7 @@ export default function Notes({ isOpen }) {
         });
     }, [activeIndex, isMobile, isTablet]);
 
-    // Animación al abrir el sobre
+
     useEffect(() => {
         if (!isOpen) return;
 
