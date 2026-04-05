@@ -27,7 +27,7 @@ export default function Notes({ isOpen }) {
 
     const getY = (i) => {
         if (activeIndex === i) {
-            return -120;
+            return -120 - (i*10);
         }
         return -20 * i;
     };
