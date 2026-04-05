@@ -156,7 +156,8 @@ body {
 // Individual Note
 .note {
     width: 90%;
-    height: 60%;
+    height: auto;
+    min-height: 60%;
     background-color: $tab-bg;
     position: absolute;
     left: 5%;
@@ -170,6 +171,9 @@ body {
     justify-content: flex-start;
     transform: translateZ(0);
     transform-origin: bottom center;
+    overflow: hidden; //
+    margin-bottom: 10px;
+
 
     &:nth-child(1) {
         //bottom: 10%;
@@ -224,10 +228,24 @@ body {
         }
     }
 }
+
 .note__text {
-    padding: 1rem;
+    padding: 1.2rem;
     width: 100%;
+    height: auto;
+    font-size: 0.95rem;
 }
+
+.note__text p {
+    text-align: left;
+    line-height: 1.5;
+}
+.note.active {
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 0;  
+}
+
 // Cursor
 .scissors {
     cursor: pointer;
